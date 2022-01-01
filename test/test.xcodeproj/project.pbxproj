@@ -37,6 +37,9 @@
 		78F7CE1E277B3CA900AE9297 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F7CE1C277B3CA900AE9297 /* PopoverViewController.xib */; };
 		78F7CE20277B427400AE9297 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7CE1F277B427400AE9297 /* PopoverPresentationController.swift */; };
 		78F7CE22277B558700AE9297 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F7CE21277B558700AE9297 /* PopoverAnimator.swift */; };
+		78F807D8278027FA0063153D /* UserAccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F807D7278027FA0063153D /* UserAccountTool.swift */; };
+		78F807DE27802D9E0063153D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F807DC27802D9E0063153D /* WelcomeViewController.swift */; };
+		78F807DF27802D9E0063153D /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F807DD27802D9E0063153D /* WelcomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		78F7CE1C277B3CA900AE9297 /* PopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
 		78F7CE1F277B427400AE9297 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
 		78F7CE21277B558700AE9297 /* PopoverAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		78F807D7278027FA0063153D /* UserAccountTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountTool.swift; sourceTree = "<group>"; };
+		78F807DC27802D9E0063153D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		78F807DD27802D9E0063153D /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		8DA822C9812993DC89F40CE2 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +159,7 @@
 				78BFFCB3277C2E4D003F932B /* OAuthViewController.swift */,
 				78BFFCB4277C2E4D003F932B /* OAuthViewController.xib */,
 				787870EA277EEF5000290005 /* UserAccount.swift */,
+				78F807D7278027FA0063153D /* UserAccountTool.swift */,
 			);
 			path = OAuth;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 		78D582CA277844EF00C550DA /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				78F807D927802D560063153D /* Welcome */,
 				78BFFCB2277C2E0E003F932B /* OAuth */,
 				78131C6E277AFF5300143DC4 /* Visitor */,
 				78D582CB2778470800C550DA /* MainViewController.swift */,
@@ -246,6 +254,15 @@
 				78F7CE21277B558700AE9297 /* PopoverAnimator.swift */,
 			);
 			path = UIPopover;
+			sourceTree = "<group>";
+		};
+		78F807D927802D560063153D /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				78F807DC27802D9E0063153D /* WelcomeViewController.swift */,
+				78F807DD27802D9E0063153D /* WelcomeViewController.xib */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +329,7 @@
 				788864BD27769FF20026673F /* Assets.xcassets in Resources */,
 				78F7CE1E277B3CA900AE9297 /* PopoverViewController.xib in Resources */,
 				78D582D927788DA400C550DA /* Message.storyboard in Resources */,
+				78F807DF27802D9E0063153D /* WelcomeViewController.xib in Resources */,
 				788864BB27769FF20026673F /* Main.storyboard in Resources */,
 				78131C74277B018D00143DC4 /* VisitorView.xib in Resources */,
 				78D582D727788D4900C550DA /* Home.storyboard in Resources */,
@@ -375,6 +393,7 @@
 				78F7CE1D277B3CA900AE9297 /* PopoverViewController.swift in Sources */,
 				78D67DAD277E021000353A33 /* Common.swift in Sources */,
 				787870EB277EEF5000290005 /* UserAccount.swift in Sources */,
+				78F807DE27802D9E0063153D /* WelcomeViewController.swift in Sources */,
 				788864B427769FF20026673F /* AppDelegate.swift in Sources */,
 				78BFFCB5277C2E4D003F932B /* OAuthViewController.swift in Sources */,
 				788864B627769FF20026673F /* SceneDelegate.swift in Sources */,
@@ -383,6 +402,7 @@
 				78D582D4277849A700C550DA /* ProfileViewController.swift in Sources */,
 				78131C72277B015E00143DC4 /* VisitorView.swift in Sources */,
 				78D582D22778499800C550DA /* MessageViewController.swift in Sources */,
+				78F807D8278027FA0063153D /* UserAccountTool.swift in Sources */,
 				78F7CE22277B558700AE9297 /* PopoverAnimator.swift in Sources */,
 				78F7CE17277B339700AE9297 /* UIBarButtonItem_Extention.swift in Sources */,
 				78F7CE19277B373100AE9297 /* TitleButton.swift in Sources */,

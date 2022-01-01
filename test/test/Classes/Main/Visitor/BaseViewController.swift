@@ -14,6 +14,18 @@ class BaseViewController: UITableViewController {
     var isLogin: Bool = false
     
     override func loadView() {
+        var accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        accountPath = (accountPath as NSString).appendingPathComponent("account.json")
+        let accountData = try! Data(contentsOf: URL(fileURLWithPath: accountPath))
+        let account = try? JSONDecoder().decode(UserAccount.self, from: accountData)
+
+        if let account = account {
+            if let expiresDate = account.expires_date{
+                isLogin = expiresDate.compare(Date()) == ComparisonResult.orderedAscending
+            }
+            isLogin = true
+        }
+        
         isLogin ? super.loadView() : setupVisitorView()
     }
     

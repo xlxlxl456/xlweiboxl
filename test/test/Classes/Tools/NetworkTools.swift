@@ -50,4 +50,13 @@ extension NetworkTools{
             finished(result as? [String : AnyObject],error)
         }
     }
+    
+    func loadUserInfo(access_token: String, uid: String,finished: @escaping(_ result: [String : AnyObject]?, _ error: NSError?) -> ()){
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        let parameters = ["access_token":access_token, "uid": uid]
+        
+        request(method: .GET, urlString: urlString, parameters: parameters as [String: AnyObject]) { result, error in
+            finished(result as? [String : AnyObject],error)
+        }
+    }
 }

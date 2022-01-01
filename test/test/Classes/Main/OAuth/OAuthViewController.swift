@@ -80,7 +80,7 @@ extension OAuthViewController: WKNavigationDelegate{
 
 extension OAuthViewController{
     private func loadAccessToken(code: String){
-        NetworkTools.shareInstance.loadAccessToken(code: code) { result, error in
+        NetworkTools.shareInstance.loadAccessToken(code: code) { [self] result, error in
             if error != nil {
                 print(error as Any)
                 return
@@ -92,7 +92,45 @@ extension OAuthViewController{
             }
             
             let account = UserAccount(dict: accountDict)
-            print("access_token:\(account.access_token),expires_date:\(account.expires_date),uid:\(account.uid),expires_in:\(account.expires_in)")
+            
+            loadUserInfo(account: account)
+        }
+    }
+    
+    private func loadUserInfo(account: UserAccount){
+        guard let accessToken = account.access_token else{
+            return
+        }
+        guard let uid = account.uid else{
+            return
+        }
+        
+        NetworkTools.shareInstance.loadUserInfo(access_token: accessToken, uid: uid) { Result, Error in
+            if Error != nil {
+                print(Error as Any)
+            }
+            
+            guard let userInfoDict = Result else {
+                return
+            }
+            
+            account.screen_name = userInfoDict["name"] as? String
+            account.avatar_large = userInfoDict["avatar_large"] as? String
+            
+            var accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+            accountPath = (accountPath as NSString).appendingPathComponent("account.json")
+            
+            let data = try? JSONEncoder().encode(account)
+            
+            try? data?.write(to: URL(fileURLWithPath: accountPath))
+            
+//            let accountJson:[String : Any] = ["access_token": account.access_token,"uid": account.uid,"expires_date": account.expires_date,"screen_name": account.screen_name,"avatar_large": account.avatar_large]
+            
+            
+//            try! NSKeyedArchiver.archivedData(withRootObject: accountData, requiringSecureCoding: true)
+//            if let dataToBeArchived = try? NSKeyedArchiver.archivedData(withRootObject: account, requiringSecureCoding: false) {
+//                try? dataToBeArchived.write(to: URL(fileURLWithPath: accountPath))
+//            }
         }
     }
 }
