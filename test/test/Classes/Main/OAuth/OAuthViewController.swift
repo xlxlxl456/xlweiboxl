@@ -131,6 +131,11 @@ extension OAuthViewController{
 //            if let dataToBeArchived = try? NSKeyedArchiver.archivedData(withRootObject: account, requiringSecureCoding: false) {
 //                try? dataToBeArchived.write(to: URL(fileURLWithPath: accountPath))
 //            }
+            
+            UserAccountTool.share.account = account
+            self.dismiss(animated: false) {
+                UIApplication.shared.keyWindow?.rootViewController = WelcomeViewController()
+            }
         }
     }
 }

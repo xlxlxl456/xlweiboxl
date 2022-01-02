@@ -13,7 +13,7 @@ class UserAccount: NSObject,Codable {
     var expires_in: TimeInterval = 0.0
     var uid: String?
     
-    var expires_date: Date?
+    var expires_date: String?
     var screen_name: String?
     var avatar_large: String?
     
@@ -23,7 +23,8 @@ class UserAccount: NSObject,Codable {
         self.access_token = dict["access_token"] as? String
         self.expires_in = dict["expires_in"] as! TimeInterval
         self.uid = dict["uid"] as? String
-        self.expires_date = Date(timeIntervalSinceNow: self.expires_in)
+        let dateFormatter = DateFormatter()
+        self.expires_date = dateFormatter.string(from: Date(timeIntervalSinceNow: self.expires_in))
 //        setValuesForKeys(dict)
     }
     
@@ -63,7 +64,7 @@ class UserAccount: NSObject,Codable {
         access_token = try values.decode(String.self, forKey: .access_token)
         expires_in = try values.decode(TimeInterval.self, forKey: .expires_in)
         uid = try values.decode(String.self, forKey: .uid)
-        expires_date = try values.decode(Date.self, forKey: .expires_date)
+        expires_date = try values.decode(String.self, forKey: .expires_date)
         screen_name = try values.decode(String.self, forKey: .screen_name)
         avatar_large = try values.decode(String.self, forKey: .avatar_large)
     }

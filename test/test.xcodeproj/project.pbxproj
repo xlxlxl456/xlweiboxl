@@ -40,6 +40,11 @@
 		78F807D8278027FA0063153D /* UserAccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F807D7278027FA0063153D /* UserAccountTool.swift */; };
 		78F807DE27802D9E0063153D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F807DC27802D9E0063153D /* WelcomeViewController.swift */; };
 		78F807DF27802D9E0063153D /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F807DD27802D9E0063153D /* WelcomeViewController.xib */; };
+		78FB828727817327001A43C9 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB828627817327001A43C9 /* Status.swift */; };
+		78FB82892781A6AD001A43C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB82882781A6AD001A43C9 /* User.swift */; };
+		78FB828B2781AD4A001A43C9 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB828A2781AD4A001A43C9 /* StatusViewModel.swift */; };
+		78FB828D2781AF72001A43C9 /* NSDate_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB828C2781AF72001A43C9 /* NSDate_Extension.swift */; };
+		78FB828F2781B66E001A43C9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB828E2781B66E001A43C9 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +84,11 @@
 		78F807D7278027FA0063153D /* UserAccountTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountTool.swift; sourceTree = "<group>"; };
 		78F807DC27802D9E0063153D /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		78F807DD27802D9E0063153D /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		78FB828627817327001A43C9 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		78FB82882781A6AD001A43C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		78FB828A2781AD4A001A43C9 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
+		78FB828C2781AF72001A43C9 /* NSDate_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDate_Extension.swift; sourceTree = "<group>"; };
+		78FB828E2781B66E001A43C9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8DA822C9812993DC89F40CE2 /* Pods_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -180,8 +190,10 @@
 		78D582C6277844EF00C550DA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				78FB828527817309001A43C9 /* HomeModel */,
 				78D582CD2778497900C550DA /* HomeViewController.swift */,
 				78D582D527788D4900C550DA /* Home.storyboard */,
+				78FB828E2781B66E001A43C9 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -241,6 +253,7 @@
 			children = (
 				78D582E62778A29F00C550DA /* UIButton_Extension.swift */,
 				78F7CE16277B339700AE9297 /* UIBarButtonItem_Extention.swift */,
+				78FB828C2781AF72001A43C9 /* NSDate_Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -263,6 +276,16 @@
 				78F807DD27802D9E0063153D /* WelcomeViewController.xib */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		78FB828527817309001A43C9 /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				78FB828627817327001A43C9 /* Status.swift */,
+				78FB82882781A6AD001A43C9 /* User.swift */,
+				78FB828A2781AD4A001A43C9 /* StatusViewModel.swift */,
+			);
+			path = HomeModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +412,7 @@
 			files = (
 				78D582CC2778470800C550DA /* MainViewController.swift in Sources */,
 				78BFFCB8277C36EF003F932B /* NetworkTools.swift in Sources */,
+				78FB828F2781B66E001A43C9 /* HomeTableViewCell.swift in Sources */,
 				78D582E72778A29F00C550DA /* UIButton_Extension.swift in Sources */,
 				78F7CE1D277B3CA900AE9297 /* PopoverViewController.swift in Sources */,
 				78D67DAD277E021000353A33 /* Common.swift in Sources */,
@@ -402,12 +426,16 @@
 				78D582D4277849A700C550DA /* ProfileViewController.swift in Sources */,
 				78131C72277B015E00143DC4 /* VisitorView.swift in Sources */,
 				78D582D22778499800C550DA /* MessageViewController.swift in Sources */,
+				78FB828727817327001A43C9 /* Status.swift in Sources */,
+				78FB828B2781AD4A001A43C9 /* StatusViewModel.swift in Sources */,
 				78F807D8278027FA0063153D /* UserAccountTool.swift in Sources */,
 				78F7CE22277B558700AE9297 /* PopoverAnimator.swift in Sources */,
 				78F7CE17277B339700AE9297 /* UIBarButtonItem_Extention.swift in Sources */,
+				78FB828D2781AF72001A43C9 /* NSDate_Extension.swift in Sources */,
 				78F7CE19277B373100AE9297 /* TitleButton.swift in Sources */,
 				78D582D02778498B00C550DA /* DiscoverViewController.swift in Sources */,
 				78F7CE20277B427400AE9297 /* PopoverPresentationController.swift in Sources */,
+				78FB82892781A6AD001A43C9 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

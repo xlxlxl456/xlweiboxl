@@ -12,14 +12,29 @@ class UserAccountTool {
     static let share:UserAccountTool = UserAccountTool()
     
     var account: UserAccount?
-    var accountPath: String?
-    var isLogin: Bool = false
+    var accountPath: String{
+        let accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        return (accountPath as NSString).appendingPathComponent("account.json")
+    }
+    var isLogin: Bool {
+        if account == nil {
+            return false
+        }
+        
+        guard let expiresDateString = account?.expires_date else{
+            return false
+        }
+        
+        let dateFormatter = DateFormatter()
+        let expiresDate = dateFormatter.date(from: expiresDateString)
+        return expiresDate!.compare(Date()) == ComparisonResult.orderedAscending
+    }
     
     init(){
-        accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        accountPath = (accountPath! as NSString).appendingPathComponent("account.json")
-        let accountData = try! Data(contentsOf: URL(fileURLWithPath: accountPath!))
+        
+        guard let accountData = try? Data(contentsOf: URL(fileURLWithPath: accountPath)) else{
+            return
+        }
         account = try? JSONDecoder().decode(UserAccount.self, from: accountData)
-        isLogin = account?.expires_date!.compare(Date()) == ComparisonResult.orderedAscending
     }
 }

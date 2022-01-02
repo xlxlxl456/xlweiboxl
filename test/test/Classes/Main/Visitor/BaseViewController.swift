@@ -11,20 +11,20 @@ class BaseViewController: UITableViewController {
 
     lazy var visitorView: VisitorView = VisitorView.visitorView()
 
-    var isLogin: Bool = false
+    var isLogin: Bool = UserAccountTool.share.isLogin
     
     override func loadView() {
-        var accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        accountPath = (accountPath as NSString).appendingPathComponent("account.json")
-        let accountData = try! Data(contentsOf: URL(fileURLWithPath: accountPath))
-        let account = try? JSONDecoder().decode(UserAccount.self, from: accountData)
+//        var accountPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+//        accountPath = (accountPath as NSString).appendingPathComponent("account.json")
+//        let accountData = try! Data(contentsOf: URL(fileURLWithPath: accountPath))
+//        let account = try? JSONDecoder().decode(UserAccount.self, from: accountData)
 
-        if let account = account {
-            if let expiresDate = account.expires_date{
-                isLogin = expiresDate.compare(Date()) == ComparisonResult.orderedAscending
-            }
-            isLogin = true
-        }
+//        if let account = account {
+//            if let expiresDate = account.expires_date{
+//                isLogin = expiresDate.compare(Date()) == ComparisonResult.orderedAscending
+//            }
+//            isLogin = true
+//        }
         
         isLogin ? super.loadView() : setupVisitorView()
     }

@@ -14,6 +14,8 @@ class HomeViewController: BaseViewController {
         self?.titleBtn.isSelected = presented
     }
     
+    private lazy var viewModels: [StatusViewModel] = [StatusViewModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +27,7 @@ class HomeViewController: BaseViewController {
         }
         
         setupNavigationBar()
+        loadStatuses()
     }
 }
 
@@ -97,3 +100,37 @@ extension HomeViewController{
 //        return self
 //    }
 //}
+
+extension HomeViewController{
+    private func loadStatuses(){
+        NetworkTools.shareInstance.loadStatuses { Result, Error in
+            if Error != nil {
+                print(Error as Any)
+            }
+            
+            guard let resultArray = Result else {
+                return
+            }
+            let statuses = resultArray["statuses"] as! [[String :AnyObject]]
+            for statusDict in statuses {
+                let status = Status(dict: statusDict)
+                let viewModel = StatusViewModel(status: status)
+                self.viewModels.append(viewModel)
+            }
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension HomeViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModels.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCellID")! as! HomeTableViewCell
+        cell.viewModel = viewModels[indexPath.row]
+        
+        return cell
+    }
+}

@@ -22,10 +22,10 @@ class WelcomeViewController: UIViewController {
         }
         
         iconViewBottomCons.constant = UIScreen.main.bounds.height - 250
-        UIView.animate(withDuration: 2, delay: 0.0, usingSpringWithDamping: 0.01, initialSpringVelocity: 5.0, options: []) {
+        UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5.0, options: []) {
             self.view.layoutIfNeeded()
         } completion: { _ in
-            <#code#>
+            UIApplication.shared.keyWindow?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         }
 
     }

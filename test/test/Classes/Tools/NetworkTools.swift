@@ -60,3 +60,14 @@ extension NetworkTools{
         }
     }
 }
+
+extension NetworkTools{
+    func loadStatuses(finished: @escaping(_ Result: [String: AnyObject]?, _ Error: NSError?) -> ()) {
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let parameters = ["access_token": (UserAccountTool.share.account?.access_token)!]
+        
+        request(method: .GET, urlString: urlString, parameters: parameters as [String: AnyObject]) { result, error in
+            finished(result as? [String : AnyObject],error)
+        }
+    }
+}
