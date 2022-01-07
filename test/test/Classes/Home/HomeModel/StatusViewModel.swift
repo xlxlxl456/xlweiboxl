@@ -13,6 +13,7 @@ class StatusViewModel: NSObject {
     var sourceText: String?
     var createAtText: String?
     var vipRank: String?
+    var picURLs: [NSURL] = [NSURL]()
     
     init(status: Status){
         super.init()
@@ -34,6 +35,15 @@ class StatusViewModel: NSObject {
             vipRank = "Vip\(mbrank)"
         }else{
             vipRank = "not vip"
+        }
+        let picURLDicts = status.pic_urls?.count != 0 ? status.pic_urls : status.retweeted_status?.pic_urls
+        if let picURLDicts = picURLDicts {
+            for picURLDict in picURLDicts {
+                guard let picURLString = picURLDict["thumbnail_pic"] else {
+                    continue
+                }
+                picURLs.append(NSURL(string: picURLString)!)
+            }
         }
     }
     

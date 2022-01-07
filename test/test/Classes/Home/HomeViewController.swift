@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeViewController: BaseViewController {
     
@@ -28,6 +29,8 @@ class HomeViewController: BaseViewController {
         
         setupNavigationBar()
         loadStatuses()
+        
+        refreshControl = UIRefreshControl()
     }
 }
 
@@ -117,6 +120,22 @@ extension HomeViewController{
                 let viewModel = StatusViewModel(status: status)
                 self.viewModels.append(viewModel)
             }
+            self.cacheImages(viewModals: self.viewModels)
+        }
+    }
+    
+    private func cacheImages(viewModals: [StatusViewModel]){
+        let group = DispatchGroup()
+        for viewModal in viewModals{
+            for picURL in viewModal.picURLs{
+                group.enter()
+                SDWebImageManager.shared.loadImage(with: picURL as URL, options: [], progress: nil) { Image, data, error, cacheType, finished, url in
+                    group.leave()
+                }
+            }
+        }
+
+        group.notify(queue: DispatchQueue.main) {
             self.tableView.reloadData()
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WelcomeViewController: UIViewController {
 
@@ -14,12 +15,15 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let data = try? Data(contentsOf: URL(string: (UserAccountTool.share.account?.avatar_large)!)!)
-        if data == nil {
-            iconView.image = UIImage(named: "me")
-        }else{
-            iconView.image = UIImage(data: data!)
-        }
+//        let data = try? Data(contentsOf: URL(string: (UserAccountTool.share.account?.avatar_large)!)!)
+//        if data == nil {
+//            iconView.image = UIImage(named: "me")
+//        }else{
+//            iconView.image = UIImage(data: data!)
+//        }
+        let profileURLString = UserAccountTool.share.account?.avatar_large
+        let url = URL(string: profileURLString ?? "")
+        iconView.sd_setImage(with: url, placeholderImage: UIImage(named: "me"), options: [], context: [:])
         
         iconViewBottomCons.constant = UIScreen.main.bounds.height - 250
         UIView.animate(withDuration: 1.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 5.0, options: []) {

@@ -14,6 +14,8 @@ class Status: NSObject {
     var text: String?
     var mid: String?
     var user:User?
+    var pic_urls: [[String: String]]?
+    var retweeted_status: Status?
     
     init(dict: [String : AnyObject]){
         super.init()
@@ -37,6 +39,12 @@ class Status: NSObject {
         
         if let userDict = dict["user"] as? [String : AnyObject] {
             user = User(dict: userDict)
+        }
+        
+        pic_urls = dict["pic_urls"] as? [[String : String]]
+        
+        if let retweetedStatusDict = dict["retweeted_status"] as? [String : AnyObject] {
+            retweeted_status = Status(dict: retweetedStatusDict)
         }
         
     }
